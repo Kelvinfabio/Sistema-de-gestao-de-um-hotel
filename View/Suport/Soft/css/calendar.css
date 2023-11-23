@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.calendar {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+td {
+    border: 1px solid #ddd;
+    height: 50px;
+    text-align: center;
+}
+
+.event-form {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
