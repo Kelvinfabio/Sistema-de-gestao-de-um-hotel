@@ -27,12 +27,20 @@
     <link rel="stylesheet" href="../View/Suport/TILH/css/style.css" type="text/css">
 </head>
 <?php
-include_once("../model/DTO/QuartoDTO.php");
-include_once("../model/DAO/DBConnection.php");
-include_once("../model/DAO/QuartoDAO.php");
-
-$quartoDTO = new QuartoDTO();
+include("../Controller/Links.php");
 $quartoDAO = new QuartoDAO();
+$quartoDTO = new ReservaQuartoDTO();
+session_start();
+if(isset($_SESSION['cliente'])) {
+    $cliente = $_SESSION['cliente'];
+}else{
+    echo 'Nenhum resultado encontrado';
+}
+if(isset($_SESSION['reserva'])) {
+    $reserva = $_SESSION['reserva'];
+}else{
+    echo 'Nenhum resultado de reserva encontrado';
+}
 ?>
 
 <body>
@@ -127,7 +135,7 @@ $quartoDAO = new QuartoDAO();
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="logo">
-                            <a href="index.php">
+                            <a href="./index.html">
                                 <img src="../View/Suport/TILH/img/logo1.png" alt="">
                             </a>
                         </div>
@@ -136,7 +144,7 @@ $quartoDAO = new QuartoDAO();
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li><a href="index.php">Home</a></li>
+                                    <li><a href="./index.html">Home</a></li>
                                     <li class="active"><a href="rooms.php">Rooms</a></li>
                                     <li><a href="./about-us.html">Comer & beber</a></li>
                                     <li><a href="./pages.html">Pages</a>
@@ -168,10 +176,10 @@ $quartoDAO = new QuartoDAO();
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h2>Nossos Quartos</h2>
+                        <h2>Comer e Beber</h2>
                         <div class="bt-option">
                             <a href="./home.html">Inicio</a>
-                            <span>Quartos</span>
+                            <span>Comer e Beber</span>
                         </div>
                     </div>
                 </div>
@@ -182,65 +190,68 @@ $quartoDAO = new QuartoDAO();
 
     <!-- Rooms Section Begin -->
     <section class="rooms-section spad">
-        <div class="container">
-                    
-            <div class="row">
-                <?php
-                    foreach ($quartoDAO->ReadAll() as $quarto):
-                        ?>
-                <div class="col-lg-4 col-md-6">
-                
-                    <div class="room-item">
-                        <img src="../View/Suport/TILH/img/room/room-1.jpg" alt="">
-                        <div class="ri-text">
-                            <h4> <?php echo $quarto->getDescricao(); ?></h4>
-                            <h3><?php echo $quarto->getPreco(); ?>kz<span>/Pornoite</span></h3>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td class="r-o">Capacidade:</td>
-                                        <td>Maximo 3 pessoas</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="r-o">Cama:</td>
-                                        <td>King Beds</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="r-o">Serviços:</td>
-                                        <td> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="margin-bottom: 8px; fill: rgba(112, 112, 121, 1);">
-                                            <path d="M12 6c3.537 0 6.837 1.353 9.293 3.809l1.414-1.414C19.874 5.561 16.071 4 12 4c-4.071.001-7.874 1.561-10.707 4.395l1.414 1.414C5.163 7.353 8.463 6 12 6zm5.671 8.307c-3.074-3.074-8.268-3.074-11.342 0l1.414 1.414c2.307-2.307 6.207-2.307 8.514 0l1.414-1.414z"></path>
-                                            <path d="M20.437 11.293c-4.572-4.574-12.301-4.574-16.873 0l1.414 1.414c3.807-3.807 10.238-3.807 14.045 0l1.414-1.414z"></path><circle cx="12" cy="18" r="2"></circle></svg> Acesso ao wifi
-                                            <br> 
-                                            <?xml version="1.0" ?>
-                                            <svg fill="none" height="20" stroke-width="1.5" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10 15.5V12.7M10 12.7C10.4762 12.7 11.7143 12.7 12.8571 12.7C13.5714 12.7 15 12.7 15 10.6C15 8.5 13.5714 8.5 12.8571 8.5L10 8.5V12.7Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="currentColor"/></svg> Estacionamento
-                                                <br>
-                                                <?xml version="1.0" ?><svg height="20" viewBox="0 0 512 512" width="20" xmlns="http://www.w3.org/2000/svg"><title/>
-                                                    <path d="M57.49,47.74,425.92,416.17a37.28,37.28,0,0,1,0,52.72h0a37.29,37.29,0,0,1-52.72,0l-90-91.55A32,32,0,0,1,274,354.91v-5.53a32,32,0,0,0-9.52-22.78l-11.62-10.73a32,32,0,0,0-29.8-7.44h0A48.53,48.53,0,0,1,176.5,295.8L91.07,210.36C40.39,159.68,21.74,83.15,57.49,47.74Z" style="fill:none;stroke:#707079;stroke-linejoin:round;stroke-width:32px"/>
-                                                    <path d="M400,32l-77.25,77.25A64,64,0,0,0,304,154.51v14.86a16,16,0,0,1-4.69,11.32L288,192" style="fill:none;stroke:#707079;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M320,224l11.31-11.31A16,16,0,0,1,342.63,208h14.86a64,64,0,0,0,45.26-18.75L480,112" style="fill:none;stroke:#707079;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/>
-                                                    <line style="fill:none;stroke:#707079;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="440" x2="360" y1="72" y2="152"/><path d="M200,368,100.28,468.28a40,40,0,0,1-56.56,0h0a40,40,0,0,1,0-56.56L128,328" style="fill:none;stroke:#707079;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg>
-                                                        Restaurante
-                                                </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <form action="../Controller/IdQuarto.php" method="post">
-                                <input type="hidden" value="<?php echo $quarto->getId();?>" name="id_quarto">
-                                <button type="submit" class="btn btn-primary">Reservar</button>
-                            </form>
-                        </div>
+    <div class="row">
+        <div class="col-md-6 col-xl-4">
+                  <div class="card bg-dark border-0 text-white">
+                    <img class="card-img" src="../View/Suport/TILH/img/Pizza.png" alt="Card image" />
+                    <div class="card-img-overlay">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This
+                        content is a little bit longer.
+                      </p>
+                      <p class="card-text">Last updated 3 mins ago</p>
+                      <div class="btn-wrapper">
+                        <button class="btn btn-outline-danger">Ver Menu</button>
+                     </div>
                     </div>
+                  </div>
                 </div>
-                <?php endforeach; ?>
-                <div class="col-lg-12">
-                    <div class="room-pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">Next <i class="fa fa-long-arrow-right"></i></a>
+                <div class="col-md-6 col-xl-4">
+                  <div class="card bg-dark border-0 text-white">
+                    <img class="card-img" src="../View/Suport/TILH/img/Meat.png" alt="Card image" />
+                    <div class="card-img-overlay">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This
+                        content is a little bit longer.
+                      </p>
+                      <p class="card-text">Last updated 3 mins ago</p>
+                      <div class="btn-wrapper">
+                        <button class="btn btn-outline-danger">Ver Menu</button>
+                     </div>
                     </div>
+                  </div>
                 </div>
-            </div>
+                <div class="col-md-6 col-xl-4">
+                  <div class="card bg-dark border-0 text-white">
+                    <img class="card-img" src="../View/Suport/TILH/img/Pasta.png" alt="Card image" />
+                    <div class="card-img-overlay">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This
+                        content is a little bit longer.
+                      </p>
+                      <p class="card-text">Last updated 3 mins ago</p>
+                      <div class="btn-wrapper">
+                        <button class="btn btn-outline-danger"  data-mdb-ripple-init data-mdb-ripple-color="dark">Ver Menu</button>
+                     </div>
+                    </div>
+                  </div>
+                </div>
         </div>
+    </div>
+    </section>
+
+    <div class="col-lg-12">
+        <div class="room-pagination">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">Next <i class="fa fa-long-arrow-right"></i></a>
+        </div>
+    </div>
+    </div>
+    </div>
     </section>
     <!-- Rooms Section End -->
 
@@ -256,7 +267,8 @@ $quartoDAO = new QuartoDAO();
                                     <img src="../View/Suport/TILH/img/footer-logo-white.png" alt="">
                                 </a>
                             </div>
-                            <p>Nós inspiramos milhares de viajentes <br />atraves do nosso website, <a href="#">RESERVE AGORA</a> !!</p>
+                            <p>Nós inspiramos milhares de viajentes <br />atraves do nosso website, <a href="#">RESERVE
+                                    AGORA</a> !!</p>
                             <div class="fa-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -326,6 +338,70 @@ $quartoDAO = new QuartoDAO();
     <script src="../View/Suport/TILH/js/jquery.slicknav.js"></script>
     <script src="../View/Suport/TILH/js/owl.carousel.min.js"></script>
     <script src="../View/Suport/TILH/js/main.js"></script>
+    <script src="../View/Suport/TILH/Js/Sneat/vendor/libs/jquery/jquery.js"></script>
+    <script src="../View/Suport/TILH/Js/Sneat/vendor/libs/popper/popper.js"></script>
+    <script src="../View/Suport/TILH/Js/Sneat/vendor/js/bootstrap.js"></script>
+    <script src="../View/Suport/TILH/Js/Sneat/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="J../View/Suport/TILH/s/Sneat/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="../View/Suport/TILH/Js/Sneat/js/main.js"></script>
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+        import { Button, initMDB } from "mdb-ui-kit";
+        initMDB({ Button });
+    </script>
+    <style>
+  .card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card:hover img {
+    transform: scale(1.1);
+    filter: blur(5px);
+  }
+
+  .card:hover .card-img-overlay {
+    bottom: 0;
+  }
+
+  .card-img {
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+  }
+
+  .card-img-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: bottom 0.3s ease-in-out;
+  }
+
+  .card-title,
+  .card-text {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .card:hover .card-title,
+  .card:hover .card-text,
+  .card:hover .btn-wrapper {
+    opacity: 1;
+  }
+  .btn-wrapper {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+</style>
 </body>
 
 </html>

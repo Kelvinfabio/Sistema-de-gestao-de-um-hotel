@@ -124,17 +124,7 @@ if(isset($_SESSION['reserva'])) {
                                 <a href="#"><i class="fa fa-tripadvisor"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                             </div>
-                            <a href="#" class="bk-btn">Reserve já</a>
-                            <div class="language-option">
-                                <img src="img/flag.jpg" alt="">
-                                <span>EN <i class="fa fa-angle-down"></i></span>
-                                <div class="flag-dropdown">
-                                    <ul>
-                                        <li><a href="#">Zi</a></li>
-                                        <li><a href="#">Fr</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <a href="sign-in.php" class="bk-btn">Login</a>
                         </div>
                     </div>
                 </div>
@@ -145,7 +135,7 @@ if(isset($_SESSION['reserva'])) {
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="./index.php">
                                 <img src="../View/Suport/TILH/img/logo1.png" alt="">
                             </a>
                         </div>
@@ -154,7 +144,7 @@ if(isset($_SESSION['reserva'])) {
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li><a href="./index.html">Home</a></li>
+                                    <li><a href="./index.php">Home</a></li>
                                     <li class="active"><a href="rooms.php">Rooms</a></li>
                                     <li><a href="./about-us.html">Comer & beber</a></li>
                                     <li><a href="./pages.html">Pages</a>

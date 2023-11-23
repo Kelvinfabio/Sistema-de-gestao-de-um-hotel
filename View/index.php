@@ -100,17 +100,7 @@ $quarto = new QuartoController();
                                 <a href="#"><i class="fa fa-tripadvisor"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                             </div>
-                            <a href="#" class="bk-btn">Reserve agora</a>
-                            <div class="language-option">
-                                <img src="img/flag.jpg" alt="">
-                                <span>EN <i class="fa fa-angle-down"></i></span>
-                                <div class="flag-dropdown">
-                                    <ul>
-                                        <li><a href="#">Zi</a></li>
-                                        <li><a href="#">Fr</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <a href="sign-in.php" class="bk-btn">Login</a>
                         </div>
                     </div>
                 </div>

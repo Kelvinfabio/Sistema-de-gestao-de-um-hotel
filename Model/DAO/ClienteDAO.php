@@ -14,7 +14,7 @@ class ClienteDAO extends DBConnection{
             echo "<script type='text/javascript'>
             swal('congrats','Account Create Successfully','success')
             </script>";
-            header("Location: /Helmark/View/sign-up.php");
+            header("Location: /TILH/View/sign-up.php");
            
             exit();
         } catch (Exception $th) {
@@ -34,21 +34,6 @@ class ClienteDAO extends DBConnection{
             print "Ocorreu um erro ao actualizar";
         }
     }
-    public function ReadAll(){
-        try {
-            $sql = "SELECT id,nome,sobrenome,numero,email,data_nasci FROM usuarios";
-            $Sql_procedure = DBConnection::getConnection()->query($sql);
-            $lista = $Sql_procedure->fetchAll(PDO::FETCH_ASSOC);
-            $aux_list = array();
-            foreach ($lista as $key) {
-                $aux_list[] = $this->ListAll($key);
-            }
-            return $aux_list;
-            
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
-    }
     public function Login(ClienteDTO $cliente){
         try {
             $sql = "SELECT id_cliente,Email,password FROM cliente WHERE Email=:Email ";
@@ -60,8 +45,8 @@ class ClienteDAO extends DBConnection{
                 session_start();
                 // Armazene os dados do quarto na sessã
             if($result && password_verify($cliente->getPassword(),$result['password'])){
-                $_SESSION['cliente'] = $result['id_cliente'];
-            header("Location: /Helmark/View/room-details.php");
+                $_SESSION['cliente'] = $result;
+            header("Location: /TILH/View/room-details.php");
             exit;
             }else{
                 echo"Erro: Email ou senha incorretos.";}

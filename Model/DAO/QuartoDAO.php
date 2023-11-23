@@ -59,7 +59,7 @@ class QuartoDAO extends DBConnection{
                 $id->setDescricao($dadosDoQuarto['Descricao']);
     
                 // Redirecione para a página room-details.php
-                header("Location: /Helmark/View/room-details.php");
+                header("Location: /TILH/View/room-details.php");
                 exit;
         } catch (\Throwable $th) {
             echo"Erro ao selecionar o quarto".$th->getMessage();
@@ -84,7 +84,7 @@ class QuartoDAO extends DBConnection{
             $_SESSION['reserva'] = $this->Reserva($reservaQuarto);
             // Armazene os dados do quarto na sessão
             $_SESSION['cliente'] = $cliente;
-            header("Location: /Helmark/View/ReservaQuarto.php");
+            header("Location: /TILH/View/ReservaQuarto.php");
             exit;
         }catch(Exception $th) {
             echo "Erro ao gravar os dados".$th->getMessage();
