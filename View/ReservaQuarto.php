@@ -200,7 +200,7 @@ if(isset($_SESSION['reserva'])) {
                         <img src="../View/Suport/TILH/img/room/room-6.jpg" alt="">
                         <div class="ri-text">
                             <h4>
-                                <?php echo $value['Descricao'];?>
+                                <?php echo $value['Categoria'];?>
                             </h4>
                             <table>
                                 <tbody>

@@ -12,8 +12,8 @@ class QuartoController
   {
     try {
       $Quarto = new QuartoDAO();
-      $QuartoDTO = new QuartoDTO();
-      $quartoid = $QuartoDTO->setId($id);
+      $QuartoDTO = new CategoriaQuartoDTO();
+      $quartoid = $QuartoDTO->setIdcategoriaQuarto($id);
       $Quarto->GetbyId($quartoid);
     } catch (\Throwable $th) {
       echo "Erro ao listar o quarto" . $th->getMessage();

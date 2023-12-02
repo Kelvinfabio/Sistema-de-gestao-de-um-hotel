@@ -27,12 +27,12 @@ class QuartoDAO extends DBConnection{
     }
     public function ReadAll(){
         try {
-            $sql = "SELECT id_quarto,NumQuarto,Descricao,andar,preco FROM quarto";
+            $sql = "SELECT id_categoriaquarto,Categoria,preco FROM categoriaquarto";
             $Sql_procedure = DBConnection::getConnection()->query($sql);
             $lista = $Sql_procedure->fetchAll(PDO::FETCH_ASSOC);
             $aux_list = array();
             foreach ($lista as $key) {
-                $aux_list[] = $this->ListAll($key);
+                $aux_list[] = $this->ListAllCategoria($key);
             }
             return $aux_list;
             
@@ -40,11 +40,11 @@ class QuartoDAO extends DBConnection{
             print "Erroaomostrar";
         }
     }
-    public function GetbyId(QuartoDTO $id){
+    public function GetbyId(CategoriaQuartoDTO $id){
         try {
-            $sql = "SELECT id_quarto,NumQuarto,Descricao,andar,preco FROM quarto WHERE id_quarto=:id_quarto;";
+            $sql = "SELECT id_categoriaquarto,Categoria,preco FROM categoriaquarto WHERE id_categoriaquarto=:id_categoriaquarto;";
             $Sql_procedure = DBConnection::getConnection()->prepare($sql);
-            $Sql_procedure->bindValue(":id_quarto", $id->getId());
+            $Sql_procedure->bindValue(":id_categoriaquarto", $id->getIdcategoriaQuarto());
             $Sql_procedure->execute();
             $dadosDoQuarto = $Sql_procedure->fetchAll(PDO::FETCH_ASSOC);
 
@@ -56,7 +56,6 @@ class QuartoDAO extends DBConnection{
                 session_start();
                 // Armazene os dados do quarto na sessão
                 $_SESSION['dadosDoQuarto'] = $dadosDoQuarto;
-                $id->setDescricao($dadosDoQuarto['Descricao']);
     
                 // Redirecione para a página room-details.php
                 header("Location: /TILH/View/room-details.php");
@@ -92,8 +91,10 @@ class QuartoDAO extends DBConnection{
     }
     public function Reserva(ReservaQuartoDTO $reservaQuarto){
         try {
-            $sql = "SELECT Nome, Sobrenome, Descricao, preco, data_entrada, data_saida, NumQuartos, NumHospedes FROM reservaquarto 
-            JOIN quarto as id_quarto ON id_quarto.id_quarto=reservaquarto.id_quarto WHERE id_cliente=:id_cliente;";
+            $sql = "SELECT Nome, Sobrenome, data_entrada, data_saida, NumQuartos, NumHospedes,Categoria FROM reservaquarto 
+            JOIN quarto ON quarto.id_quarto=reservaquarto.id_quarto
+            JOIN categoriaquarto ON quarto.id_categoriaquarto = categoriaquarto.id_categoriaquarto
+             WHERE id_cliente=:id_cliente";
             $Sql_procedure = DBConnection::getConnection()->prepare($sql);
             $Sql_procedure->bindValue(":id_cliente",$reservaQuarto->getId_cliente());
             $Sql_procedure->execute();
@@ -125,6 +126,13 @@ class QuartoDAO extends DBConnection{
         $Quarto->setandar($linha["andar"]);
         $Quarto->setPreco($linha["preco"]);
 
+        return $Quarto;
+    }
+    public function ListAllCategoria($linha){
+        $Quarto = new CategoriaQuartoDTO();
+        $Quarto->setIdcategoriaQuarto($linha["id_categoriaquarto"]);
+        $Quarto->setCategoria($linha["Categoria"]);
+        $Quarto->setPreco($linha["preco"]);
         return $Quarto;
     }
      

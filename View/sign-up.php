@@ -107,7 +107,7 @@ $cliente  = new ClienteController;
                 </div>
               </div>
               <div class="card-body">
-                <form role="form text-left" action="/Helmark/Controller/SignupCliente.php" method="POST">
+                <form role="form text-left" action="/TILH/Controller/SignupCliente.php" method="POST">
                   <div class="mb-3">
                     <input type="text" name="Nome" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon">
                   </div>

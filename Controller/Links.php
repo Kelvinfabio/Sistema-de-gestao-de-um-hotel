@@ -10,3 +10,4 @@ include_once("../Controller/QuartoController.php");
 include_once("../model/DAO/QuartoDAO.php");
 
 include_once("../Model/DTO/ReservaQuartoDTO.php");
+include_once("../Model/DTO/CategoriaQuartoDTO.php");

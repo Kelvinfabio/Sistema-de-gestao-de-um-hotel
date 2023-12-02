@@ -27,12 +27,11 @@
     <link rel="stylesheet" href="../View/Suport/TILH/css/style.css" type="text/css">
 </head>
 <?php
-include_once("../model/DTO/QuartoDTO.php");
-include_once("../model/DAO/DBConnection.php");
-include_once("../model/DAO/QuartoDAO.php");
+include_once("../Controller/Links.php");
 
-$quartoDTO = new QuartoDTO();
+$quartoDTO = new CategoriaQuartoDTO();
 $quartoDAO = new QuartoDAO();
+
 ?>
 
 <body>
@@ -187,14 +186,15 @@ $quartoDAO = new QuartoDAO();
             <div class="row">
                 <?php
                     foreach ($quartoDAO->ReadAll() as $quarto):
+                    
                         ?>
                 <div class="col-lg-4 col-md-6">
                 
                     <div class="room-item">
                         <img src="../View/Suport/TILH/img/room/room-1.jpg" alt="">
                         <div class="ri-text">
-                            <h4> <?php echo $quarto->getDescricao(); ?></h4>
-                            <h3><?php echo $quarto->getPreco(); ?>kz<span>/Pornoite</span></h3>
+                            <h4> <?php echo $quarto->getCategoria(); ?></h4>
+                            <h3><?php  echo $quarto->getPreco(); ?>kz<span>/Pornoite</span></h3>
                             <table>
                                 <tbody>
                                     <tr>
@@ -225,7 +225,7 @@ $quartoDAO = new QuartoDAO();
                                 </tbody>
                             </table>
                             <form action="../Controller/IdQuarto.php" method="post">
-                                <input type="hidden" value="<?php echo $quarto->getId();?>" name="id_quarto">
+                                <input type="hidden" value="<?php echo $quarto->getIdcategoriaQuarto();?>" name="id_quarto">
                                 <button type="submit" class="btn btn-primary">Reservar</button>
                             </form>
                         </div>

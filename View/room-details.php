@@ -198,7 +198,7 @@ session_start();
                                         ?>
                                     <h5 class="card-title">Dados do quarto</h5>
                                     <p class="card-text"
-                                        style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;"><?php echo $value['Descricao']?></p>
+                                        style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;"><?php echo $value['Categoria']?></p>
                                     <p class="card-text" style="font-weight: bold;">Detalhes: Maximo 2 pessoas, Casa de
                                         banho king, FrigoBar...</p>
                                     <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -301,7 +301,8 @@ session_start();
                                                 <path
                                                     d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z">
                                                 </path>
-                                            </svg> <?php echo $cliente['Email']; 
+                                            </svg> <?php echo $cliente['Email'];
+                                             
                                             ?></h5>
                                 
                                     <?php }
@@ -394,7 +395,7 @@ session_start();
                                         $dadosDoQuarto = $_SESSION['dadosDoQuarto'];
                                         foreach($dadosDoQuarto as $key => $value) {
                                         ?>
-                                        <input type="hidden" name="id_quarto" value="<?php echo $value["id_quarto"];?>">
+                                        <input type="hidden" name="id_quarto" value="<?php echo $value["id_categoriaquarto"];?>">
                                     <?php }
                                     }?>
                                 </div>
