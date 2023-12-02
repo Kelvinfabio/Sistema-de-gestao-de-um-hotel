@@ -74,10 +74,7 @@ $quarto = new QuartoController();
             <a href="#"><i class="fa fa-tripadvisor"></i></a>
             <a href="#"><i class="fa fa-instagram"></i></a>
         </div>
-        <ul class="top-widget">
-            <li><i class="fa fa-phone"></i> (+244) 943336417</li>
-            <li><i class="fa fa-envelope"></i> info.internationalluxuryhotel@contact.com</li>
-        </ul>
+        
     </div>
     <!-- Offcanvas Menu Section End -->
 
@@ -125,7 +122,7 @@ $quarto = new QuartoController();
                                     <li><a href="Comer&Beber.php">Comer & Beber</a></li>
                                     <li><a href="ReservaQuarto.php">Sua Reserva</a>
                                     </li>
-                                    <li><a href="./blog.html">News</a></li>
+                                    <li><a href="Nossosservicos.php">Nossos Serviços</a>
                                     <li><a href="./contact.html">Contact</a></li>
                                 </ul>
                             </nav>

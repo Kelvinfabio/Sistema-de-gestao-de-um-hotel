@@ -137,7 +137,7 @@ if(isset($_SESSION['reserva'])) {
                                     <li class="active"><a href="rooms.php">Rooms</a></li>
                                     <li><a href="./about-us.html">Comer & beber</a></li>
                                     <li><a href="RersevaQuarto.php">Sua reserva</a></li>
-                                    <li><a href="Nossosservicos.php">Nossos serviços</a></li>
+                                    <li><a href="./blog.html">Nossos serviços</a></li>
                                     <li><a href="./contact.html">Contact</a></li>
                                 </ul>
                             </nav>
@@ -158,10 +158,10 @@ if(isset($_SESSION['reserva'])) {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h2>Comer e Beber</h2>
+                        <h2>Nossos serviços</h2>
                         <div class="bt-option">
                             <a href="./home.html">Inicio</a>
-                            <span>Comer e Beber</span>
+                            <span>Nossos serviços</span>
                         </div>
                     </div>
                 </div>
@@ -175,12 +175,11 @@ if(isset($_SESSION['reserva'])) {
     <div class="row">
         <div class="col-md-6 col-xl-4">
                   <div class="card bg-dark border-0 text-white">
-                    <img class="card-img" src="../View/Suport/TILH/img/Pizza.png" alt="Card image" />
+                    <img class="card-img" src="../View/Suport/TILH/img/SPA.png" alt="Card image" />
                     <div class="card-img-overlay">
-                      <h5 class="card-title">Card title</h5>
+                      <h5 class="card-title">SPA </h5>
                       <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to additional content. This
-                        content is a little bit longer.
+                      Temos um serviços de SPA que vai lhe agradar completamente, faça a sua marcação e desfrute de um momento de relaxe.
                       </p>
                       <p class="card-text">Last updated 3 mins ago</p>
                       <div class="btn-wrapper">
@@ -191,12 +190,11 @@ if(isset($_SESSION['reserva'])) {
                 </div>
                 <div class="col-md-6 col-xl-4">
                   <div class="card bg-dark border-0 text-white">
-                    <img class="card-img" src="../View/Suport/TILH/img/Meat.png" alt="Card image" />
+                    <img class="card-img" src="../View/Suport/TILH/img/Reuniao.png" alt="Card image" />
                     <div class="card-img-overlay">
-                      <h5 class="card-title">Card title</h5>
+                      <h5 class="card-title">Marque uma reunião</h5>
                       <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to additional content. This
-                        content is a little bit longer.
+                        Marque uma reunião com o seu team dentro do The International Luxury Hotel e usufrua de um coffeebreak
                       </p>
                       <p class="card-text">Last updated 3 mins ago</p>
                       <div class="btn-wrapper">
