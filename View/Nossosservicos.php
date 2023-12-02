@@ -183,7 +183,7 @@ if(isset($_SESSION['reserva'])) {
                       </p>
                       <p class="card-text">Last updated 3 mins ago</p>
                       <div class="btn-wrapper">
-                        <button class="btn btn-outline-danger">Ver Menu</button>
+                        <button class="btn btn-outline-danger">Ver serviço</button>
                      </div>
                     </div>
                   </div>
@@ -198,7 +198,7 @@ if(isset($_SESSION['reserva'])) {
                       </p>
                       <p class="card-text">Last updated 3 mins ago</p>
                       <div class="btn-wrapper">
-                        <button class="btn btn-outline-danger">Ver Menu</button>
+                        <button class="btn btn-outline-danger">Ver serviço</button>
                      </div>
                     </div>
                   </div>
@@ -207,10 +207,9 @@ if(isset($_SESSION['reserva'])) {
                   <div class="card bg-dark border-0 text-white">
                     <img class="card-img" src="../View/Suport/TILH/img/Pasta.png" alt="Card image" />
                     <div class="card-img-overlay">
-                      <h5 class="card-title">Card title</h5>
+                      <h5 class="card-title">Comida</h5>
                       <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to additional content. This
-                        content is a little bit longer.
+                       Marque uma reunião 
                       </p>
                       <p class="card-text">Last updated 3 mins ago</p>
                       <div class="btn-wrapper">
