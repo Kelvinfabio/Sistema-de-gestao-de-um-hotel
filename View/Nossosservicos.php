@@ -28,19 +28,10 @@
 </head>
 <?php
 include("../Controller/Links.php");
-$quartoDAO = new QuartoDAO();
+$servico = new ServicosDAO();
 $quartoDTO = new ReservaQuartoDTO();
 session_start();
-if(isset($_SESSION['cliente'])) {
-    $cliente = $_SESSION['cliente'];
-}else{
-    echo 'Nenhum resultado encontrado';
-}
-if(isset($_SESSION['reserva'])) {
-    $reserva = $_SESSION['reserva'];
-}else{
-    echo 'Nenhum resultado de reserva encontrado';
-}
+
 ?>
 
 <body>
@@ -172,54 +163,36 @@ if(isset($_SESSION['reserva'])) {
 
     <!-- Rooms Section Begin -->
     <section class="rooms-section spad">
-    <div class="row">
-        <div class="col-md-6 col-xl-4">
-                  <div class="card bg-dark border-0 text-white">
-                    <img class="card-img" src="../View/Suport/TILH/img/SPA.png" alt="Card image" />
+
+        <div class="row">
+            <?php
+                foreach($servico->ShowAll() as $ser):
+        ?>
+            <div class="col-md-6 col-xl-4 pb-4 pl-4">
+                <div class="card bg-dark border-0 text-white">
+                    <img class="card-img" src="../View/Suport/TILH/img/<?php echo $ser['img']?>" alt="Card image" />
                     <div class="card-img-overlay">
-                      <h5 class="card-title">SPA </h5>
-                      <p class="card-text">
-                      Temos um serviços de SPA que vai lhe agradar completamente, faça a sua marcação e desfrute de um momento de relaxe.
-                      </p>
-                      <p class="card-text">Last updated 3 mins ago</p>
-                      <div class="btn-wrapper">
-                        <button class="btn btn-outline-danger">Ver serviço</button>
-                     </div>
+                        <h5 class="card-title">
+                            <?php echo $ser['nome']; ?>
+                        </h5>
+                        <p class="card-text">
+                            Temos um serviços de SPA que vai lhe agradar completamente, faça a sua marcação e desfrute
+                            de um momento de relaxe.
+                        </p>
+                        <p class="card-text">Last updated 3 mins ago</p>
+                        <div class="btn-wrapper">
+                        <form action="../Controller/IdServico.php" method="POST">
+                            <input type="hidden" value="<?php echo $ser['id_servico'];?>" name="id_servico">
+                            <button type="submit" class="btn btn-outline-danger">Ver serviço</button>
+                        </form>
+                        </div>
                     </div>
-                  </div>
                 </div>
-                <div class="col-md-6 col-xl-4">
-                  <div class="card bg-dark border-0 text-white">
-                    <img class="card-img" src="../View/Suport/TILH/img/Reuniao.png" alt="Card image" />
-                    <div class="card-img-overlay">
-                      <h5 class="card-title">Marque uma reunião</h5>
-                      <p class="card-text">
-                        Marque uma reunião com o seu team dentro do The International Luxury Hotel e usufrua de um coffeebreak
-                      </p>
-                      <p class="card-text">Last updated 3 mins ago</p>
-                      <div class="btn-wrapper">
-                        <button class="btn btn-outline-danger">Ver serviço</button>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                  <div class="card bg-dark border-0 text-white">
-                    <img class="card-img" src="../View/Suport/TILH/img/Pasta.png" alt="Card image" />
-                    <div class="card-img-overlay">
-                      <h5 class="card-title">Comida</h5>
-                      <p class="card-text">
-                       Marque uma reunião 
-                      </p>
-                      <p class="card-text">Last updated 3 mins ago</p>
-                      <div class="btn-wrapper">
-                        <button class="btn btn-outline-danger"  data-mdb-ripple-init data-mdb-ripple-color="dark">Ver Menu</button>
-                     </div>
-                    </div>
-                  </div>
-                </div>
+            </div>
+            <?php endforeach;?>
         </div>
-    </div>
+
+
     </section>
 
     <div class="col-lg-12">
@@ -337,50 +310,51 @@ if(isset($_SESSION['reserva'])) {
         initMDB({ Button });
     </script>
     <style>
-  .card {
-    position: relative;
-    overflow: hidden;
-  }
+        .card {
+            position: relative;
+            overflow: hidden;
+        }
 
-  .card:hover img {
-    transform: scale(1.1);
-    filter: blur(5px);
-  }
+        .card:hover img {
+            transform: scale(1.1);
+            filter: blur(5px);
+        }
 
-  .card:hover .card-img-overlay {
-    bottom: 0;
-  }
+        .card:hover .card-img-overlay {
+            bottom: 0;
+        }
 
-  .card-img {
-    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
-  }
+        .card-img {
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        }
 
-  .card-img-overlay {
-    position: absolute;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    transition: bottom 0.3s ease-in-out;
-  }
+        .card-img-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: bottom 0.3s ease-in-out;
+        }
 
-  .card-title,
-  .card-text {
-    transition: opacity 0.3s ease-in-out;
-  }
+        .card-title,
+        .card-text {
+            transition: opacity 0.3s ease-in-out;
+        }
 
-  .card:hover .card-title,
-  .card:hover .card-text,
-  .card:hover .btn-wrapper {
-    opacity: 1;
-  }
-  .btn-wrapper {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-  }
-</style>
+        .card:hover .card-title,
+        .card:hover .card-text,
+        .card:hover .btn-wrapper {
+            opacity: 1;
+        }
+
+        .btn-wrapper {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+        }
+    </style>
 </body>
 
 </html>
