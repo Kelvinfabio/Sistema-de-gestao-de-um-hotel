@@ -1,17 +1,5 @@
 <?php
 class QuartoDAO extends DBConnection{
-    public function create(QuartoDTO $quarto){
-        try {
-            $sql = "INSERT INTO quarto(NumQuarto,Descricao,andar,preco)VALUES(:NumQuarto,:Descricao,:andar,:preco)";
-            $Sql_procedure = DBConnection::getConnection()->prepare($sql);
-            $Sql_procedure->bindValue(":NumQuarto", $quarto->getNumQuarto());
-            $Sql_procedure->bindValue(":Descricao", $quarto->getDescricao());
-            $Sql_procedure->bindValue(":andar", $quarto->getandar());
-            $Sql_procedure->bindValue(":preco", $quarto->getpreco());
-        } catch (Exception $th) {
-        print "Ocorreu um erro ao cadastrar";
-        }
-    }
     public function update(QuartoDTO $quarto){    
     }
     public function delete(QuartoDTO $quarto){
@@ -99,6 +87,8 @@ class QuartoDAO extends DBConnection{
             $Sql_procedure->bindValue(":id_cliente",$reservaQuarto->getId_cliente());
             $Sql_procedure->execute();
             $lista = $Sql_procedure->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $lista;
             }catch(Exception $th) {
                 echo "".$th->getMessage();
             }
@@ -107,8 +97,6 @@ class QuartoDAO extends DBConnection{
     public function ListAllReserva($linha){
         $Quarto = new ReservaQuartoDTO();
         $quartodto = new QuartoDTO();
-        $quartodto->setDescricao($linha["Descricao"]);
-        $quartodto->setPreco($linha["preco"]);
         $Quarto->setNome($linha["Nome"]);
         $Quarto->setSobrenome($linha["Sobrenome"]);
         $Quarto->setData_entrada($linha["data_entrada"]);
@@ -122,9 +110,7 @@ class QuartoDAO extends DBConnection{
         $Quarto = new QuartoDTO();
         $Quarto->setId($linha["id_quarto"]);
         $Quarto->setNumQuarto($linha["NumQuarto"]);
-        $Quarto->setDescricao($linha["Descricao"]);
         $Quarto->setandar($linha["andar"]);
-        $Quarto->setPreco($linha["preco"]);
 
         return $Quarto;
     }

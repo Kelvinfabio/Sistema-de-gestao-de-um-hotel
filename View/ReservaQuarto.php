@@ -38,9 +38,9 @@ if(isset($_SESSION['cliente'])) {
 }
 if(isset($_SESSION['reserva'])) {
     $reserva = $_SESSION['reserva'];
-}else{
-    echo 'Nenhum resultado de reserva encontrado';
 }
+$quartoDTO->setIdCliente($cliente["id_cliente"]);
+$showReservation = $quartoDAO->Reserva($quartoDTO);
 ?>
 
 <body>
@@ -193,7 +193,7 @@ if(isset($_SESSION['reserva'])) {
         <div class="container">
             <div class="row">
                 <?php 
-                                        foreach($reserva as $key => $value) {
+                                        foreach($showReservation as $key => $value) {
                                 ?>
                 <div class="col-lg-4 col-md-6">
                     <div class="room-item">

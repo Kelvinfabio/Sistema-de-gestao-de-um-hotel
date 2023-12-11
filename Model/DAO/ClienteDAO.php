@@ -36,6 +36,7 @@ class ClienteDAO extends DBConnection{
     }
     public function Login(ClienteDTO $cliente){
         try {
+            session_start();
             $sql = "SELECT id_cliente,Email,password FROM cliente WHERE Email=:Email ";
             $Sql_procedure = DBConnection::getConnection()->prepare($sql);
             $Sql_procedure->bindValue(":Email", $cliente->getEmail());
@@ -49,7 +50,13 @@ class ClienteDAO extends DBConnection{
             header("Location: /TILH/View/room-details.php");
             exit;
             }else{
-                echo"Erro: Email ou senha incorretos.";}
+                if($Sql_procedure->rowCount()<1){
+                    $_SESSION["status"] = "Failed";
+
+                    header("Location: /TILH/View/sign-in.php");
+                    exit();
+                    }
+                }
 
         } catch (\Throwable $th) {
             echo "Erro ao fazer o login ".$th->getMessage();

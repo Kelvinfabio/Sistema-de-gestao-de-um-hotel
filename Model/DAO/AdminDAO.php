@@ -124,5 +124,26 @@ class AdminDAO extends DBConnection{
             echo "".$th->getMessage();
         }
     }
+    public function AddCategoria(CategoriaQuartoDTO $categoria){
+        try {
+            session_start();
+            $sql = "INSERT INTO categoriaquarto(categoria,preco)VALUES(:categoria,:preco)";
+            $sql_procedure = DBConnection::getConnection()->prepare($sql);
+            $sql_procedure->bindValue(":categoria",$categoria->getCategoria());
+            $sql_procedure->bindValue(":preco",$categoria->getPreco());
+            $sql_procedure->execute();
+
+            if($sql_procedure->rowCount()>0){
+                $_SESSION["status"] = "Success";
+            }else{
+                $_SESSION["status"] = "Failed";
+            }
+            header("Location: /TILH/View/AddCategoria.php");
+            exit();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+
+    }
 
 }

@@ -50,6 +50,9 @@ include ("../Controller/Links.php");
 session_start();
 $admin = new AdminDAO();
 $result = $admin->ShowAllCategoria();
+if (isset($_SESSION['status'])) {
+    $status = $_SESSION['status'];
+}
 ?>
 
 <body>
@@ -167,10 +170,10 @@ $result = $admin->ShowAllCategoria();
                       <h5 class="mb-0">Cadastrar Categoria De Quarto</h5>
                     </div>
                     <div class="card-body">
-                      <form action="../Controller/CadastroQuarto.php" method="POST">
+                      <form action="../Controller/CadastroCategoria.php" method="POST">
                         <div class="mb-3">
                           <label class="form-label" for="basic-default-company">Categoria</label>
-                          <input type="text" class="form-control" name="NumQuarto" placeholder="ACME Inc." />
+                          <input type="text" class="form-control" name="categoria" placeholder="ACME Inc." />
                         </div>
                         <div class="mb-3">
                           <label class="form-label" for="basic-default-email">Preço</label>
@@ -182,7 +185,7 @@ $result = $admin->ShowAllCategoria();
                               placeholder="john.doe"
                               aria-label="john.doe"
                               aria-describedby="basic-default-email2"
-                              name="andar"
+                              name="preco"
                             />
                           </div>
                         </div>
@@ -250,9 +253,19 @@ $result = $admin->ShowAllCategoria();
 
   <!-- Page JS -->
   <script src="../View/Suport/Sneat/js/dashboards-analytics.js"></script>
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <?php if($status=="Success"){?>
+  <script type="text/javascript">
+	var status = "Success";
+		swal({
+        title: "Sucesso",
+        text: "O Cadastro da Categoria do quarto foi efectuado com sucesso",
+        icon: "success",
+        });
+        </script>
+<?php unset($_SESSION['status']); }?>
 </body>
 
 </html>

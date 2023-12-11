@@ -280,11 +280,11 @@ if (isset($_SESSION['status'])) {
 	var status = "Success";
 		swal({
         title: "Sucesso",
-        text: "Cadastro foi efectuado com sucesso",
+        text: "Cadastro do quarto foi efectuado com sucesso",
         icon: "success",
         });
+        </script>
 <?php unset($_SESSION['status']); }?>
-</script>
         
 </body>
 
