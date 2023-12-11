@@ -1,38 +1,26 @@
 <?php
 
 class QuartoDTO{
-    public $id;
-    public $NumQuarto;
-    public $Descricao;
-    public $andar;
-    public $preco;
+    private $id_quarto;
+    private $id_categoria;
+    private $NumQuarto;
+    private $andar;
 public function __construct() {
     }
     public function getId() {
-        return $this->id;
+        return $this->id_quarto;
+    }
+    public function getId_categoria() {
+        return $this->id_categoria;
     }
     public function getNumQuarto() {
         return $this->NumQuarto;
     }
-    public function getDescricao() {
-        return $this->Descricao;
-    }
     public function getandar() {
         return $this->andar;
     }
-    public function getPreco() {
-        return $this->preco;
-    }
-    public function setDescricao($Descricao) {
-        $this->Descricao = $Descricao;
-        return $this;
-    }
     public function setandar($andar) {
         $this->andar = $andar;
-        return $this;
-    }
-    public function setPreco($preco) {
-        $this->preco = $preco;
         return $this;
     }
     public function setNumQuarto($NumQuarto) {
@@ -40,7 +28,11 @@ public function __construct() {
         return $this;
     }
     public function setId($id) {
-        $this->id = $id;
+        $this->id_quarto = $id;
+        return $this;
+    }
+    public function setId_categoria($id_categoria){
+        $this->id_categoria = $id_categoria;
         return $this;
     }
     

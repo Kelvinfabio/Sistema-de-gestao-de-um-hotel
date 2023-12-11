@@ -162,7 +162,7 @@ session_start();
                         <h2>Sua Reserva</h2>
                         <div class="bt-option">
                             <a href="./home.html">Home</a>
-                            <span>Rooms</span>
+                            <span>Nossos Serviços</span>
                         </div>
                     </div>
                 </div>
@@ -199,8 +199,9 @@ session_start();
                                     <h5 class="card-title">Dados do quarto</h5>
                                     <p class="card-text"
                                         style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;"><?php echo $value['nome']?></p>
-                                    <p class="card-text" style="font-weight: bold;">Detalhes: Maximo 2 pessoas, Casa de
-                                        banho king, FrigoBar...</p>
+                                    <p class="card-text" style="font-weight: bold;">Detalhes: <?php echo $value['Descricao']?>
+                                    
+                                        </p>
                                     <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             viewBox="0 0 24 24"
                                             style="margin-bottom: 8px; fill: rgba(112, 112, 121, 1);">
@@ -222,29 +223,11 @@ session_start();
                                             <circle cx="12" cy="12" r="10" stroke="currentColor" />
                                         </svg> Estacionamento
                                         <br>
-                                        <?xml version="1.0" ?><svg height="20" viewBox="0 0 512 512" width="20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <title />
-                                            <path
-                                                d="M57.49,47.74,425.92,416.17a37.28,37.28,0,0,1,0,52.72h0a37.29,37.29,0,0,1-52.72,0l-90-91.55A32,32,0,0,1,274,354.91v-5.53a32,32,0,0,0-9.52-22.78l-11.62-10.73a32,32,0,0,0-29.8-7.44h0A48.53,48.53,0,0,1,176.5,295.8L91.07,210.36C40.39,159.68,21.74,83.15,57.49,47.74Z"
-                                                style="fill:none;stroke:#707079;stroke-linejoin:round;stroke-width:32px" />
-                                            <path
-                                                d="M400,32l-77.25,77.25A64,64,0,0,0,304,154.51v14.86a16,16,0,0,1-4.69,11.32L288,192"
-                                                style="fill:none;stroke:#707079;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
-                                            <path
-                                                d="M320,224l11.31-11.31A16,16,0,0,1,342.63,208h14.86a64,64,0,0,0,45.26-18.75L480,112"
-                                                style="fill:none;stroke:#707079;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
-                                            <line
-                                                style="fill:none;stroke:#707079;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
-                                                x1="440" x2="360" y1="72" y2="152" />
-                                            <path
-                                                d="M200,368,100.28,468.28a40,40,0,0,1-56.56,0h0a40,40,0,0,1,0-56.56L128,328"
-                                                style="fill:none;stroke:#707079;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
-                                        </svg> Restaurante
+                                     
                                     </p>
                                     <?php }
                                     }else{
-                                        echo "Nenhum dado do quarto encontrado.";
+                                        echo "Nenhum dado de serviços encontrados.";
                                     } ?>
                                 </div>
                             </div>
@@ -278,7 +261,7 @@ session_start();
                             <div class="card shadow-none bg-transparent border border-gray-100 mb-3">
                                 <div class="card-body">
                                     <p class="card-title" style="font-weight: bold;">O seu plano de pagamento</p>
-                                     <p style="font-weight: bold; color: #57c370;">Não é necessário pagar hoje. Pagará durante a sua estadia.</p>
+                                     <p style="font-weight: bold; color: #57c370;">Não é necessário pagar hoje. Pagará no hotel</p>
                                 </div>
                             </div>
                             <div class="card shadow-none bg-transparent border border-gray-100 mb-3">
@@ -398,18 +381,6 @@ session_start();
                                         <input type="hidden" name="id_quarto" value="<?php echo $value["id_categoriaquarto"];?>">
                                     <?php }
                                     }?>
-                                </div>
-                            </div>
-                            <div class="card shadow-none bg-transparent border border-gray-100 mb-3">
-                                <div class="card-body">
-                                    <h4 class="card-title" style="font-weight: bold;">Informação útil:</h4>
-                                    <div class="rd-reviews" style="padding: 10px;">
-                                    <p class="card-text"
-                                        style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Premium
-                                        King Room</p>
-                                    <p class="card-text" style="font-weight: bold;">Detalhes: Maximo 2 pessoas, Casa de
-                                        banho king, FrigoBar...</p>
-                                    </div>
                                 </div>
                             </div>
                         </div>

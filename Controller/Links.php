@@ -13,3 +13,5 @@ include_once("../Model/DTO/CategoriaQuartoDTO.php");
 include_once("../Model/DAO/ServicosDAO.php");
 include_once("../Model/DTO/ServicosDTO.php");
 include_once("../Controller/ServicoController.php");
+include_once("../Model/DAO/AdminDAO.php");
+include_once("../Controller/AdminController.php");
