@@ -32,6 +32,8 @@ $quartoDTO = new QuartoDTO();
 $quarto = new QuartoDAO();
 $clienteDAO = new ClienteDAO();
 $clienteDTO = new ClienteDTO();
+$service = new ServicosDAO();
+$result =$service->ShowAll();
 session_start();
 ?>
 <body>
@@ -183,7 +185,7 @@ session_start();
                 class="d-flex justify-content-center align-items-center big-dot dot">
                 <i class="fa fa-check text-white"></i></span>
             </div>
-            <form action="../Controller/ReservaQuarto.php" method="post" class="form" id="form1">
+            <form action="../Controller/ReservaOutrosServices.php" method="post" class="form" id="form1">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="row">
@@ -317,7 +319,7 @@ session_start();
                                             <div class="mb-3 col-lg-6">
                                                 <br>
                                                 <label for="">Name</label>
-                                                <input type="text" name="Nome" id="nome" class="form-control">
+                                                <input type="text" name="nome" id="nome" class="form-control">
                                             </div>
                                             <div class="mb-3 col-6">
                                                 <br>
@@ -326,9 +328,6 @@ session_start();
                                             </div>
                                             <div class="mb-3 col-lg-6">
                                                 <br>
-                                                <label for="">Endereço de email</label>
-                                                <input type="text" name="email" id="nome" class="form-control"
-                                                    placeholder="info@gmail.com">
                                             </div>
                                         </div>
                                         <div class="rd-reviews" style="padding-top: 10px;">
@@ -374,11 +373,11 @@ session_start();
                                         <?php 
                                     }else{
                                         echo"Nao foi encontrado nenhum resultado";}?>
-                                    <?php if(isset($_SESSION['dadosDoQuarto'])) {
-                                        $dadosDoQuarto = $_SESSION['dadosDoQuarto'];
-                                        foreach($dadosDoQuarto as $key => $value) {
+                                    <?php if(isset($_SESSION['servicos'])) {
+                                        $servicos = $_SESSION['servicos'];
+                                        foreach($servicos as $key => $value) {
                                         ?>
-                                        <input type="hidden" name="id_quarto" value="<?php echo $value["id_categoriaquarto"];?>">
+                                        <input type="hidden" name="id_servico" value="<?php echo $value["id_servico"];?>">
                                     <?php }
                                     }?>
                                 </div>
@@ -426,6 +425,23 @@ session_start();
                                     magnam.</p>
                             </div>
                         </div>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-4">
+                <div class="room-booking">
+                        <h3>Your Reservation</h3>
+                            <div class="check-date">
+                                <label for="date-in">Check In:</label>
+                                <input type="text" class="date-input" id="date-in" name="data_entrada">
+                                <i class="icon_calendar"></i>
+                            </div>
+                            <div class="check-date">
+                                <label for="date-out">Check Out:</label>
+                                <input type="text" class="date-input" id="date-out" name="data_saida">
+                                <i class="icon_calendar"></i>
+                            </div>
+                            <button type="submit">Reservar</button>
                     </div>
                 </div>
             </div>

@@ -55,6 +55,7 @@ class QuartoDAO extends DBConnection{
         }
     public function ReservaQuarto(ReservaQuartoDTO $reservaQuarto){
         try {
+            session_start();
             $sql = "INSERT INTO reservaquarto(id_cliente,Nome,Sobrenome,id_quarto,data_entrada,data_saida,NumQuartos,NumHospedes)VALUES(:id_cliente,:Nome,:Sobrenome,:id_quarto,:data_entrada,:data_saida,:NumQuartos,:NumHospedes);";
             $Sql_procedure = DBConnection::getConnection()->prepare($sql);
             $Sql_procedure->bindValue(":id_cliente", $reservaQuarto->getId_cliente());
@@ -66,11 +67,12 @@ class QuartoDAO extends DBConnection{
             $Sql_procedure->bindValue(":NumQuartos", $reservaQuarto->getNumQuartos());
             $Sql_procedure->bindValue(":NumHospedes", $reservaQuarto->getNumHospedes());
             $Sql_procedure->execute();
-            $cliente = $Sql_procedure->fetchAll(PDO::FETCH_ASSOC);
-            session_start();
-            $_SESSION['reserva'] = $this->Reserva($reservaQuarto);
-            // Armazene os dados do quarto na sessão
-            $_SESSION['cliente'] = $cliente;
+            var_dump($Sql_procedure->rowCount());
+            if($Sql_procedure->rowCount()>0){
+                $_SESSION["status"] = "Success";
+            }else{
+                $_SESSION["status"] = "Failed";
+            }
             header("Location: /TILH/View/ReservaQuarto.php");
             exit;
         }catch(Exception $th) {
@@ -88,7 +90,6 @@ class QuartoDAO extends DBConnection{
             $Sql_procedure->execute();
             $lista = $Sql_procedure->fetchAll(PDO::FETCH_ASSOC);
             
-            return $lista;
             }catch(Exception $th) {
                 echo "".$th->getMessage();
             }

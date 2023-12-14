@@ -95,32 +95,20 @@ $result = $admin->ShowCurrentGuest();
             </a>
           </li>
             <!-- Extended components -->
-          <li class="menu-item">
+          
+          <li class="menu-item ">
+            <a href="QuartoAdmin.php" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-layout"></i>
+              <div data-i18n="Layouts">R. de Quarto</div>
+            </a>
+          </li>
+          <li class="menu-item ">
+            <a href="QuartoAdmin.php" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-layout"></i>
+              <div data-i18n="Layouts">R. de outros serviços</div>
+            </a>
+          </li>
         
-              <div data-i18n="Extended UI">Extended UI</div>
-            </a>
-            <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="extended-ui-perfect-scrollbar.html" class="menu-link">
-                  <div data-i18n="Perfect Scrollbar">Perfect scrollbar</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="extended-ui-text-divider.html" class="menu-link">
-                  <div data-i18n="Text Divider">Text Divider</div>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="menu-item">
-            <a href="icons-boxicons.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-crown"></i>
-              <div data-i18n="Boxicons">Boxicons</div>
-            </a>
-          </li>
-            </ul>
-          </li>
         </ul>
       </aside>
       <!-- / Menu -->
@@ -576,11 +564,6 @@ $result = $admin->ShowCurrentGuest();
     <div class="layout-overlay layout-menu-toggle"></div>
   </div>
   <!-- / Layout wrapper -->
-
-  <div class="buy-now">
-    <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank"
-      class="btn btn-danger btn-buy-now">Upgrade to Pro</a>
-  </div>
 
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->

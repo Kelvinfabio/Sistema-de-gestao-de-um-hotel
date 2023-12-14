@@ -28,16 +28,16 @@
 </head>
 <?php
 include("../Controller/Links.php");
-$quartoDAO = new QuartoDAO();
-$quartoDTO = new ReservaQuartoDTO();
+$serviceDAO = new ServicosDAO();
+$serviceDTO = new ReservaServices();
 session_start();
 if(isset($_SESSION['cliente'])) {
     $cliente = $_SESSION['cliente'];
 }else{
     echo 'Nenhum resultado encontrado';
 }
-$quartoDTO->setIdCliente($cliente["id_cliente"]);
-$showReservation = $quartoDAO->Reserva($quartoDTO);
+$serviceDTO->setIdCliente($cliente["id_cliente"]);
+$showReservation = $serviceDAO->ShowReservationServices($serviceDTO);
 ?>
 
 <body>
@@ -194,10 +194,10 @@ $showReservation = $quartoDAO->Reserva($quartoDTO);
                                 ?>
                 <div class="col-lg-4 col-md-6">
                     <div class="room-item">
-                        <img src="../View/Suport/TILH/img/room/room-6.jpg" alt="">
+                        <img src="../View/Suport/TILH/img/<?php echo $value['img']?>" alt="">
                         <div class="ri-text">
                             <h4>
-                                <?php echo $value['Categoria'];?>
+                                <?php echo $value['nome'];?>
                             </h4>
                             <table>
                                 <tbody>
@@ -214,15 +214,9 @@ $showReservation = $quartoDAO->Reserva($quartoDTO);
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="r-o">Nº quartos:</td>
+                                        <td class="r-o">preco:</td>
                                         <td>
-                                            <?php echo $value['NumQuartos'];?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="r-o">Hospedes:</td>
-                                        <td>
-                                            <?php echo $value['NumHospedes'];?>
+                                            <?php echo $value['preco'];?>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -461,7 +455,7 @@ $showReservation = $quartoDAO->Reserva($quartoDTO);
 	var status = "Success";
 		swal({
         title: "Sucesso",
-        text: "Agendamento do quarto foi efectuado com sucesso",
+        text: "Agendamento de serviços foi efectuado com sucesso",
         icon: "success",
         });
         </script>

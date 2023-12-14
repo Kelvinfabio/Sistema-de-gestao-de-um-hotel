@@ -37,4 +37,16 @@ class AdminController{
             echo "".$th->getMessage();
         }
     }
+    public function LoginAdmin($username,$password){
+        try {
+            $funcionarioDTO = new FuncionarioDTO();
+            $funcionarioDAO = new AdminDAO();
+            $funcionarioDTO->setUsername($username);
+            $funcionarioDTO->setPassword($password);
+            $funcionarioDAO->Login($funcionarioDTO);
+        } catch (\Throwable $th) {
+            echo "".$th->getMessage();
+        }
+    }
+
 }

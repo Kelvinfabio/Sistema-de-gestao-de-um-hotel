@@ -49,11 +49,8 @@
 include ("../Controller/Links.php");
 session_start();
 $admin = new AdminDAO();
-$result = $admin->ShowCurrentGuest();
-$result1 = $admin->ShowAllRoms();
-if(isset($_SESSION["status"])){
-  $status = $_SESSION["status"];
-}
+$result = $admin->ShowAllRoomsReservations();
+
 ?>
 
 <body>
@@ -85,14 +82,14 @@ if(isset($_SESSION["status"])){
           </li>
 
           <!-- Layouts -->
-          <li class="menu-item active">
+          <li class="menu-item">
             <a href="QuartoAdmin.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-layout"></i>
               <div data-i18n="Layouts">Quarto</div>
             </a>
           </li>
           <!-- Extended components -->
-          <li class="menu-item ">
+          <li class="menu-item active">
             <a href="ReservaQuartoAdmin.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-layout"></i>
               <div data-i18n="Layouts">R. de Quarto</div>
@@ -151,52 +148,55 @@ if(isset($_SESSION["status"])){
 
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="card">
-              <h5 class="card-header">Quartos</h5>
+              <h5 class="card-header">Reserva de Quartos</h5>
               <div class="table-responsive text-nowrap">
                 <table class="table">
                   <thead>
                     <tr>
+                      <th>Nome</th>
+                      <th>Sobrenome</th>
+                      <th>Nº Quartos </th>
+                      <th>Nº Hospedes</th>
+                      <th>Nº do Quarto</th>
                       <th>Categoria</th>
-                      <th>Nº Quarto</th>
-                      <th>Andar </th>
-                      <th>Preco</th>
-                      <th>Delete</th>
+                      <th>Preço</th>
+                      <th>Inicio</th>
+                      <th>Fim</th>
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
                     <?php  
-                        foreach($result1 as $key){
+                        foreach($result as $key){
                     ?>
                     <tr>
                       <td>
                         <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>
-                          <?php echo $key["Categoria"]; ?>
+                          <?php echo $key["Nome"]; ?>
                         </strong>
+                      </td>
+                      <td>
+                        <?php echo $key["Sobrenome"]; ?>
+                      </td>
+                      <td>
+                        <?php echo $key["NumQuartos"]; ?>
+                      </td>
+                      <td>
+                        <?php echo $key["NumHospedes"]; ?>
                       </td>
                       <td>
                         <?php echo $key["NumQuarto"]; ?>
                       </td>
                       <td>
-                        <?php echo $key["andar"]; ?>
+                        <?php echo $key["Categoria"]; ?>
                       </td>
                       <td><span class="badge bg-label-warning me-1">
                           <?php echo $key["preco"]; ?>kz
                         </span></td>
+                        <td>
+                        <?php echo $key["data_entrada"]; ?>
+                      </td>
                       <td>
-                        <form action="../Controller/DeleteQuarto.php" method="POST">
-                          <input type="hidden" value="<?php echo $key["id_quarto"]?>" name="id_quarto">
-                          <button style=" border: none; background-color: white;" type="submit">
-                            <svg class="feather feather-trash-2" style="color: #e14444;" fill="none" height="24"
-                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                              <polyline points="3 6 5 6 21 6" />
-                              <path
-                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                              <line x1="10" x2="10" y1="11" y2="17" />
-                              <line x1="14" x2="14" y1="11" y2="17" />
-                            </svg>
-                          </button>
-                        </form>
+                        <?php echo $key["data_saida"]; ?>
                       </td>
                     </tr>
                     <?php }?>

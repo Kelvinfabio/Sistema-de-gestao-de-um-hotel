@@ -33,6 +33,10 @@ $quarto = new QuartoDAO();
 $clienteDAO = new ClienteDAO();
 $clienteDTO = new ClienteDTO();
 session_start();
+if (isset($_SESSION['status'])) {
+    $status = $_SESSION['status'];
+}
+?>
 ?>
 <body>
     <!-- Page Preloder -->

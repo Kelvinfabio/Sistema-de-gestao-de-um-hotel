@@ -165,5 +165,58 @@ class AdminDAO extends DBConnection{
             echo "".$th->getMessage();
         }
     }
+    public function Login(FuncionarioDTO $funcionario){
+        try {
+            session_start();
+            $sql = "SELECT id_funcionario,username,password FROM funcionario WHERE username=:username and password=:password ";
+            $Sql_procedure = DBConnection::getConnection()->prepare($sql);
+            $Sql_procedure->bindValue(":username", $funcionario->getusername());
+            $Sql_procedure->bindValue(":password", $funcionario->getPassword());
+            $Sql_procedure->execute();
+            $result = $Sql_procedure->fetch(PDO::FETCH_ASSOC);
+                // Armazene os dados do quarto na sessão
+            if($result){
+                $_SESSION['funcionario'] = $result;
+            header("Location: /TILH/View/Adminindex.php");
+            exit;
+            }else{
+                    $_SESSION["status"] = "Failed";
+                    header("Location: /TILH/View/LoginAdmin.php");
+                    exit;
+                }
+
+        } catch (\Throwable $th) {
+            echo "Erro ao fazer o login ".$th->getMessage();
+        }
+    }
+    public function ShowAllReservationServices(){
+        try {
+            $sql = "SELECT * FROM reservaservico JOIN cliente ON cliente.id_cliente = reservaservico.id_cliente 
+            JOIN servicos ON servicos.id_servico = reservaservico.id_servico;";
+            $sql_procedure = DBConnection::getConnection()->prepare($sql);
+            $sql_procedure->execute();
+            $result = $sql_procedure->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+    public function ShowAllRoomsReservations(){
+        try {
+            $sql = "SELECT * FROM reservaquarto JOIN cliente ON cliente.id_cliente = reservaquarto.id_cliente 
+            JOIN quarto ON quarto.id_quarto = reservaquarto.id_quarto 
+            JOIN categoriaquarto ON categoriaquarto.id_categoriaquarto = quarto.id_categoriaquarto ;";
+            $sql_procedure = DBConnection::getConnection()->prepare($sql);
+            $sql_procedure->execute();
+            $result = $sql_procedure->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
 
 }
