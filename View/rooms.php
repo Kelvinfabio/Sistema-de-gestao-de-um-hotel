@@ -134,19 +134,18 @@ $quartoDAO = new QuartoDAO();
                     <div class="col-lg-9">
                         <div class="nav-menu">
                             <nav class="mainmenu">
-                                <ul>
-                                    <li><a href="index.php">Home</a></li>
-                                    <li class="active"><a href="rooms.php">Rooms</a></li>
-                                    <li><a href="./about-us.html">Comer & beber</a></li>
-                                    <li><a href="./pages.html">Pages</a>
+                            <ul>
+                                    <li class="active"><a href="./index.php">Home</a></li>
+                                    <li><a href="rooms.php">Rooms</a></li>
+                                    <li><a href="Comer&Beber.php">Comer & Beber</a></li>
+                                    <li><a href="#">Sua Reserva</a>
                                         <ul class="dropdown">
-                                            <li><a href="./room-details.html">Room Details</a></li>
-                                            <li><a href="./blog-details.html">Blog Details</a></li>
-                                            <li><a href="#">Family Room</a></li>
-                                            <li><a href="#">Premium Room</a></li>
+                                            <li><a href="ReservaQuarto.php">R. Quarto</a></li>
+                                            <li><a href="./blog-details.html">R. Outros serviços</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="./blog.html">News</a></li>
+                                    </li>
+                                    <li><a href="Nossosservicos.php">Nossos Serviços</a>
                                     <li><a href="./contact.html">Contact</a></li>
                                 </ul>
                             </nav>

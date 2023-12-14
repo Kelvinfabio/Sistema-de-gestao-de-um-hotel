@@ -138,11 +138,18 @@ if (isset($_SESSION['status'])) {
                     <div class="col-lg-9">
                         <div class="nav-menu">
                             <nav class="mainmenu">
-                                <ul>
-                                    <li><a href="index.php">Home</a></li>
-                                    <li class="active"><a href="./rooms.html">Rooms</a></li>
-                                    <li><a href="./about-us.html">Comer e Beber</a></li>
-                                    <li><a href="ReservaQuarto.php">Sua reserva</a></li>
+                            <ul>
+                                    <li class="active"><a href="./index.php">Home</a></li>
+                                    <li><a href="<?= $quarto->quarto();?>">Rooms</a></li>
+                                    <li><a href="Comer&Beber.php">Comer & Beber</a></li>
+                                    <li><a href="#">Sua Reserva</a>
+                                        <ul class="dropdown">
+                                            <li><a href="ReservaQuarto.php">R. Quarto</a></li>
+                                            <li><a href="./blog-details.html">R. Outros serviços</a></li>
+                                        </ul>
+                                    </li>
+                                    </li>
+                                    <li><a href="Nossosservicos.php">Nossos Serviços</a>
                                     <li><a href="./contact.html">Contact</a></li>
                                 </ul>
                             </nav>
