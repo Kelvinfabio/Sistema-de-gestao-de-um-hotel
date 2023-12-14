@@ -80,7 +80,7 @@ class AdminDAO extends DBConnection{
     }
     public function ShowAllRoms(){
         try {
-            $sql = "SELECT * FROM quarto JOIN categoriaquarto ON categoriaquarto.id_categoriaquarto = quarto.id_categoriaquarto;";
+            $sql = "SELECT * FROM quarto JOIN categoriaquarto ON categoriaquarto.id_categoriaquarto = quarto.id_categoriaquarto ORDER BY id_quarto ASC;";
             $sql_procedure = DBConnection::getConnection()->prepare($sql);
             $sql_procedure->execute();
             $result = $sql_procedure->fetchAll(PDO::FETCH_ASSOC);
@@ -144,6 +144,26 @@ class AdminDAO extends DBConnection{
             //throw $th;
         }
 
+    }
+    public function DeleteQuarto(QuartoDTO $quartoDTO){
+        try {
+            session_start();
+            $sql = "DELETE FROM quarto Where id_quarto = :id_quarto";
+            $sql_procedure = DBConnection::getConnection()->prepare($sql);
+            $sql_procedure->bindValue(":id_quarto",$quartoDTO->getId());
+            $sql_procedure->execute();
+
+            if($sql_procedure->rowCount()>0){
+                $_SESSION["status"] = "Success";
+            }else{
+                $_SESSION["status"] = "Failed";
+            }
+            
+            header("Location: /TILH/View/QuartoAdmin.php");
+            exit();
+        } catch (\Throwable $th) {
+            echo "".$th->getMessage();
+        }
     }
 
 }

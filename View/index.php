@@ -120,7 +120,12 @@ $quarto = new QuartoController();
                                     <li class="active"><a href="./index.php">Home</a></li>
                                     <li><a href="<?= $quarto->quarto();?>">Rooms</a></li>
                                     <li><a href="Comer&Beber.php">Comer & Beber</a></li>
-                                    <li><a href="ReservaQuarto.php">Sua Reserva</a>
+                                    <li><a href="#">Sua Reserva</a>
+                                        <ul class="dropdown">
+                                            <li><a href="ReservaQuarto.php">R. Quarto</a></li>
+                                            <li><a href="./blog-details.html">R. Outros serviços</a></li>
+                                        </ul>
+                                    </li>
                                     </li>
                                     <li><a href="Nossosservicos.php">Nossos Serviços</a>
                                     <li><a href="./contact.html">Contact</a></li>

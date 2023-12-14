@@ -27,4 +27,14 @@ class AdminController{
         }
 
     }
+    public function DeleteQuarto($id_quarto){
+        try {
+            $quarto = new QuartoDTO();
+            $AdminDAO = new AdminDAO();
+            $quarto->setId($id_quarto);
+            $AdminDAO->DeleteQuarto($quarto);
+        } catch (\Throwable $th) {
+            echo "".$th->getMessage();
+        }
+    }
 }

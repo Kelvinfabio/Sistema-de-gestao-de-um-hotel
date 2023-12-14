@@ -37,6 +37,10 @@
 <?php
 include("../Controller/Links.php");
 $cliente = new ClienteController();
+session_start();
+if (isset($_SESSION['status'])) {
+$status = $_SESSION['status'];
+}
 ?>
 <body class="">
   <div class="container position-sticky z-index-sticky top-0">
@@ -127,6 +131,20 @@ $cliente = new ClienteController();
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="/View/Suport/Soft/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <?php if (isset($_SESSION['status'])) {
+          $status = $_SESSION['status'];
+          if($status=="Failed"){
+?>
+  <script type="text/javascript">
+		swal({
+        title: "Erro",
+        text: "Password ou Email estão errados",
+        icon: "error",
+        });
+        </script>
+<?php unset($_SESSION['status']); }}?>
 </body>
 
 </html>

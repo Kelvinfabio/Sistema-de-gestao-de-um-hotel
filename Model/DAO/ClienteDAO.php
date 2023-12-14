@@ -42,20 +42,15 @@ class ClienteDAO extends DBConnection{
             $Sql_procedure->bindValue(":Email", $cliente->getEmail());
             $Sql_procedure->execute();
             $result = $Sql_procedure->fetch(PDO::FETCH_ASSOC);
-
-                session_start();
                 // Armazene os dados do quarto na sessã
             if($result && password_verify($cliente->getPassword(),$result['password'])){
                 $_SESSION['cliente'] = $result;
             header("Location: /TILH/View/room-details.php");
             exit;
             }else{
-                if($Sql_procedure->rowCount()<1){
                     $_SESSION["status"] = "Failed";
-
                     header("Location: /TILH/View/sign-in.php");
-                    exit();
-                    }
+                    exit;
                 }
 
         } catch (\Throwable $th) {

@@ -51,6 +51,9 @@ session_start();
 $admin = new AdminDAO();
 $result = $admin->ShowCurrentGuest();
 $result1 = $admin->ShowAllRoms();
+if(isset($_SESSION["status"])){
+  $status = $_SESSION["status"];
+}
 ?>
 
 <body>
@@ -88,8 +91,8 @@ $result1 = $admin->ShowAllRoms();
               <div data-i18n="Layouts">Quarto</div>
             </a>
           </li>
-            <!-- Extended components -->
-            <li class="menu-item ">
+          <!-- Extended components -->
+          <li class="menu-item ">
             <a href="QuartoAdmin.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-layout"></i>
               <div data-i18n="Layouts">R. de Quarto</div>
@@ -144,121 +147,145 @@ $result1 = $admin->ShowAllRoms();
 
         <!-- Content wrapper -->
         <div class="content-wrapper">
-            <!-- Content -->
+          <!-- Content -->
 
-            <div class="container-xxl flex-grow-1 container-p-y">
+          <div class="container-xxl flex-grow-1 container-p-y">
             <div class="card">
-                <h5 class="card-header">Quartos</h5>
-                <div class="table-responsive text-nowrap">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Categoria</th>
-                        <th>Nº Quarto</th>
-                        <th>Andar </th>
-                        <th>Preco</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0"><?php  
+              <h5 class="card-header">Quartos</h5>
+              <div class="table-responsive text-nowrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Categoria</th>
+                      <th>Nº Quarto</th>
+                      <th>Andar </th>
+                      <th>Preco</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-border-bottom-0">
+                    <?php  
                         foreach($result1 as $key){
                     ?>
-                      <tr>
-                        <td>
-                          <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong><?php echo $key["Categoria"]; ?></strong>
-                        </td>
-                        <td><?php echo $key["NumQuarto"]; ?></td>
-                        <td>
+                    <tr>
+                      <td>
+                        <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>
+                          <?php echo $key["Categoria"]; ?>
+                        </strong>
+                      </td>
+                      <td>
+                        <?php echo $key["NumQuarto"]; ?>
+                      </td>
+                      <td>
                         <?php echo $key["andar"]; ?>
-                        </td>
-                        <td><span class="badge bg-label-warning me-1"><?php echo $key["preco"]; ?>kz</span></td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-2"></i> Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr><?php }?>
-                    </tbody>
-                  </table>
+                      </td>
+                      <td><span class="badge bg-label-warning me-1">
+                          <?php echo $key["preco"]; ?>kz
+                        </span></td>
+                      <td>
+                        <form action="../Controller/DeleteQuarto.php" method="POST">
+                          <input type="hidden" value="<?php echo $key["id_quarto"]?>" name="id_quarto">
+                          <button style=" border: none; background-color: white;" type="submit">
+                            <svg class="feather feather-trash-2" style="color: #e14444;" fill="none" height="24"
+                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                              <polyline points="3 6 5 6 21 6" />
+                              <path
+                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                              <line x1="10" x2="10" y1="11" y2="17" />
+                              <line x1="14" x2="14" y1="11" y2="17" />
+                            </svg>
+                          </button>
+                        </form>
+                      </td>
+                    </tr>
+                    <?php }?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+              <?php if(isset($_SESSION["status"])){
+                    $status = $_SESSION["status"];
+                      if($status=="Success"){ ?>
+                <div style="margin-left: 10px;" class="mb-4 bs-toast toast fade show bg-danger fixed-bottom fixed-start"
+                  role="alert" aria-live="assertive" aria-atomic="true">
+                  <div class="toast-header">
+                    <i class="bx bx-bell me-2"></i>
+                    <div class="me-auto fw-semibold"></div>
+                    <small>11 mins ago</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                  </div>
+                  <div class="toast-body">
+                   Eliminação do quarto efectuada com sucesso.
+                  </div>
+                </div>
+            <?php unset($_SESSION['status']);}}?>
+
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+                </div>
+                <div>
+                  <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
+                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+
+                  <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    target="_blank" class="footer-link me-4">Documentation</a>
+
+                  <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
+                    class="footer-link me-4">Support</a>
                 </div>
               </div>
-            </div>
+            </footer>
+            <!-- / Footer -->
 
-          <!-- / Content -->
-
-          <!-- Footer -->
-          <footer class="content-footer footer bg-footer-theme">
-            <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-              <div class="mb-2 mb-md-0">
-                ©
-                <script>
-                  document.write(new Date().getFullYear());
-                </script>
-                , made with ❤️ by
-                <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-              </div>
-              <div>
-                <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                  target="_blank" class="footer-link me-4">Documentation</a>
-
-                <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
-                  class="footer-link me-4">Support</a>
-              </div>
-            </div>
-          </footer>
-          <!-- / Footer -->
-
-          <div class="content-backdrop fade"></div>
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
         </div>
-        <!-- Content wrapper -->
+        <!-- / Layout page -->
       </div>
-      <!-- / Layout page -->
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <div class="buy-now">
+      <a href="AddQuarto.php" target="_blank" class="btn btn-danger btn-buy-now">Add Quarto</a>
     </div>
 
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
-  </div>
-  <!-- / Layout wrapper -->
 
-  <div class="buy-now">
-    <a href="AddQuarto.php" target="_blank"
-      class="btn btn-danger btn-buy-now">Add Quarto</a>
-  </div>
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="../View/Suport/Sneat/vendor/libs/jquery/jquery.js"></script>
+    <script src="../View/Suport/Sneat/vendor/libs/popper/popper.js"></script>
+    <script src="../View/Suport/Sneat/vendor/js/bootstrap.js"></script>
+    <script src="../View/Suport/Sneat/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
+    <script src="../View/Suport/Sneat/vendor/js/menu.js"></script>
+    <!-- endbuild -->
 
-  <!-- Core JS -->
-  <!-- build:js assets/vendor/js/core.js -->
-  <script src="../View/Suport/Sneat/vendor/libs/jquery/jquery.js"></script>
-  <script src="../View/Suport/Sneat/vendor/libs/popper/popper.js"></script>
-  <script src="../View/Suport/Sneat/vendor/js/bootstrap.js"></script>
-  <script src="../View/Suport/Sneat/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <!-- Vendors JS -->
+    <script src="../View/Suport/Sneat/vendor/libs/apex-charts/apexcharts.js"></script>
 
-  <script src="../View/Suport/Sneat/vendor/js/menu.js"></script>
-  <!-- endbuild -->
+    <!-- Main JS -->
+    <script src="../View/Suport/Sneat/js/main.js"></script>
 
-  <!-- Vendors JS -->
-  <script src="../View/Suport/Sneat/vendor/libs/apex-charts/apexcharts.js"></script>
+    <!-- Page JS -->
+    <script src="../View/Suport/Sneat/js/dashboards-analytics.js"></script>
 
-  <!-- Main JS -->
-  <script src="../View/Suport/Sneat/js/main.js"></script>
-
-  <!-- Page JS -->
-  <script src="../View/Suport/Sneat/js/dashboards-analytics.js"></script>
-
-  <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>
