@@ -228,8 +228,9 @@ $showReservation = $quartoDAO->Reserva($quartoDTO);
                                 </tbody>
 
                             </table>
-                            <button type="button" class="btn primary-btn" data-toggle="modal"
+                            <button type="submit" class="btn primary-btn" data-toggle="modal"
                                 data-target="#exampleModalCenter">
+                                <?php echo $value['id_reservaquarto'];?>
                                 <?xml version="1.0"?>
                                 <svg class="feather feather-trash-2" style="color: #e14444;" fill="none"
                                     height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

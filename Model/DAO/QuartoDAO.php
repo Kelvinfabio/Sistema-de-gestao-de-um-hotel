@@ -81,7 +81,7 @@ class QuartoDAO extends DBConnection{
     }
     public function Reserva(ReservaQuartoDTO $reservaQuarto){
         try {
-            $sql = "SELECT Nome, Sobrenome, data_entrada, data_saida, NumQuartos, NumHospedes,Categoria FROM reservaquarto 
+            $sql = "SELECT id_reservaquarto,Nome, Sobrenome, data_entrada, data_saida, NumQuartos, NumHospedes,Categoria FROM reservaquarto 
             JOIN quarto ON quarto.id_quarto=reservaquarto.id_quarto
             JOIN categoriaquarto ON quarto.id_categoriaquarto = categoriaquarto.id_categoriaquarto
              WHERE id_cliente=:id_cliente";
