@@ -188,6 +188,7 @@ class AdminDAO extends DBConnection{
         } catch (\Throwable $th) {
             echo "Erro ao fazer o login ".$th->getMessage();
         }
+
     }
     public function ShowAllReservationServices(){
         try {
@@ -203,11 +204,29 @@ class AdminDAO extends DBConnection{
             //throw $th;
         }
     }
-    public function ShowAllRoomsReservations(){
+    public function ShowAllRoomsReservations($paginaAtual){
+        try {
+            $paginas = $paginaAtual;
+            $limite  = 10;
+            $inicio = ($paginas*$limite) - $limite;
+            $sql = "SELECT * FROM reservaquarto JOIN cliente ON cliente.id_cliente = reservaquarto.id_cliente 
+            JOIN quarto ON quarto.id_quarto = reservaquarto.id_quarto 
+            JOIN categoriaquarto ON categoriaquarto.id_categoriaquarto = quarto.id_categoriaquarto ORDER BY cliente.nome LIMIT $inicio,$limite ;";
+            $sql_procedure = DBConnection::getConnection()->prepare($sql);
+            $sql_procedure->execute();
+            $result = $sql_procedure->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+    public function ShowAllCancelRoomsReservations(){
         try {
             $sql = "SELECT * FROM reservaquarto JOIN cliente ON cliente.id_cliente = reservaquarto.id_cliente 
             JOIN quarto ON quarto.id_quarto = reservaquarto.id_quarto 
-            JOIN categoriaquarto ON categoriaquarto.id_categoriaquarto = quarto.id_categoriaquarto ;";
+            JOIN categoriaquarto ON categoriaquarto.id_categoriaquarto = quarto.id_categoriaquarto WHERE delete_at IS NOT NULL ORDER BY cliente.nome  ;";
             $sql_procedure = DBConnection::getConnection()->prepare($sql);
             $sql_procedure->execute();
             $result = $sql_procedure->fetchAll(PDO::FETCH_ASSOC);

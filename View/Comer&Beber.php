@@ -30,16 +30,12 @@
 include("../Controller/Links.php");
 $quartoDAO = new QuartoDAO();
 $quartoDTO = new ReservaQuartoDTO();
-session_start();
 if(isset($_SESSION['cliente'])) {
+session_start();
     $cliente = $_SESSION['cliente'];
-}else{
-    echo 'Nenhum resultado encontrado';
 }
 if(isset($_SESSION['reserva'])) {
     $reserva = $_SESSION['reserva'];
-}else{
-    echo 'Nenhum resultado de reserva encontrado';
 }
 ?>
 
@@ -134,12 +130,12 @@ if(isset($_SESSION['reserva'])) {
                             <nav class="mainmenu">
                             <ul>
                                     <li class="active"><a href="./index.php">Home</a></li>
-                                    <li><a href="<?= $quarto->quarto();?>">Rooms</a></li>
+                                    <li><a href="rooms.php">Rooms</a></li>
                                     <li><a href="Comer&Beber.php">Comer & Beber</a></li>
                                     <li><a href="#">Sua Reserva</a>
                                         <ul class="dropdown">
                                             <li><a href="ReservaQuarto.php">R. Quarto</a></li>
-                                            <li><a href="./blog-details.html">R. Outros serviços</a></li>
+                                            <li><a href="ReservaServices.php">R. Outros serviços</a></li>
                                         </ul>
                                     </li>
                                     </li>

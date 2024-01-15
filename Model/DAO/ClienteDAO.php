@@ -2,6 +2,7 @@
 class ClienteDAO extends DBConnection{
     public function create(ClienteDTO $cliente){
         try {
+            session_start();
             $sql = "INSERT INTO cliente(nome,lastname,Email,password)VALUES(:nome,:lastname,:Email,:password)";
             $Sql_procedure = DBConnection::getConnection()->prepare($sql);
             $Sql_procedure->bindValue(":nome", $cliente->getNome());
@@ -10,12 +11,13 @@ class ClienteDAO extends DBConnection{
             $Sql_procedure->bindValue(":password", password_hash($cliente->getPassword(), PASSWORD_BCRYPT));
             $Sql_procedure->execute();
             
-            echo "	<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
-            echo "<script type='text/javascript'>
-            swal('congrats','Account Create Successfully','success')
-            </script>";
-            header("Location: /TILH/View/sign-up.php");
-           
+            if ($Sql_procedure->rowCount()>0) {
+                $_SESSION["status"]= "Success";
+            }else{
+                $_SESSION["status"]= "Failed";
+            }
+            
+            header("Location: /TILH/View/sign-up.php");    
             exit();
         } catch (Exception $th) {
         print "Ocorreu um erro ao cadastrar".$th->getMessage();

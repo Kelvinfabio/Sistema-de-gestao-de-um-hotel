@@ -17,3 +17,4 @@ include_once("../Model/DAO/AdminDAO.php");
 include_once("../Controller/AdminController.php");
 include_once("../Model/DTO/ReservaServices.php");
 include_once("../Model/DTO/FuncionarioDTO.php");
+include_once("../Model/DTO/CancelarReservaDTO.php");

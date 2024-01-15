@@ -47,4 +47,15 @@ class QuartoController
       echo "Erro ao mostrar os dados do join". $th->getMessage();
     }
   }
+  public function DeleteReservaQuarto($id_reservaquarto,$motivo){
+    try {
+      $quartoDTO = new ReservaQuartoDTO();
+      $quartoDAO = new QuartoDAO();
+      $quartoDTO->setIdReservaQuarto($id_reservaquarto);
+      $quartoDTO->setMotivo($motivo);
+      $quartoDAO->DeleteReservaQuarto($quartoDTO);
+    } catch (\Throwable $th) {
+      //throw $th;
+    }
+  }
 }

@@ -81,10 +81,10 @@ class QuartoDAO extends DBConnection{
     }
     public function Reserva(ReservaQuartoDTO $reservaQuarto){
         try {
-            $sql = "SELECT id_reservaquarto,Nome, Sobrenome, data_entrada, data_saida, NumQuartos, NumHospedes,Categoria FROM reservaquarto 
+            $sql = "SELECT id_reservaquarto,Nome,delete_at, Sobrenome, data_entrada, data_saida, NumQuartos, NumHospedes,Categoria FROM reservaquarto 
             JOIN quarto ON quarto.id_quarto=reservaquarto.id_quarto
             JOIN categoriaquarto ON quarto.id_categoriaquarto = categoriaquarto.id_categoriaquarto
-             WHERE id_cliente=:id_cliente";
+             WHERE id_cliente=:id_cliente AND delete_at IS NULL";
             $Sql_procedure = DBConnection::getConnection()->prepare($sql);
             $Sql_procedure->bindValue(":id_cliente",$reservaQuarto->getId_cliente());
             $Sql_procedure->execute();
@@ -94,6 +94,40 @@ class QuartoDAO extends DBConnection{
                 echo "".$th->getMessage();
             }
             return $lista;
+        }
+        public function DeleteReservaQuarto(ReservaQuartoDTO $id_reservaquarto){
+            try {
+                session_start();
+                $sql = "UPDATE reservaquarto SET delete_at = NOW(),motivo = :motivo  WHERE id_reservaquarto = :id_reservaquarto";
+                $sql_procedure = DBConnection::getConnection()->prepare($sql);
+                $sql_procedure->bindValue(":id_reservaquarto",$id_reservaquarto->getIdReservaQuarto());
+                $sql_procedure->bindValue(":motivo",$id_reservaquarto->getMotivo());
+                $sql_procedure->execute();
+
+                if($sql_procedure->rowCount()>0){
+                    $_SESSION["status"] = "Success";
+                }else{
+                    $_SESSION["status"] = "Failed";
+                }
+                header("Location: /TILH/View/ReservaQuarto.php");
+                exit;
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+        }
+        public function cancelarReserva(CancelarReservaDTO $cancelar){
+            try {
+                $sql = "INSERT INTO cancelarreserva(id_reservaquarto,motivo) Values (:id_reservaquarto,:motivo)";
+                $sql_procedure = DBConnection::getConnection()->prepare($sql);
+                $sql_procedure->bindValue(":id_reservaquarto",$cancelar->getIdReservaQuarto());
+                $sql_procedure->bindValue(":motivo",$cancelar->getMotivo());
+                $sql_procedure->execute();
+
+                header("Location: /TILH/View/ReservaQuarto.php");
+                exit;
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
         }
     public function ListAllReserva($linha){
         $Quarto = new ReservaQuartoDTO();

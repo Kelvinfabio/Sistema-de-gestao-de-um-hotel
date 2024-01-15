@@ -39,6 +39,7 @@ include("../Controller/ClienteController.php");
 include("../Model/DAO/DBConnection.php");
 include("../Model/DAO/ClienteDAO.php");
 $cliente  = new ClienteController;
+session_start();
 ?>
 <body class="">
   <!-- Navbar -->
@@ -207,6 +208,19 @@ $cliente  = new ClienteController;
     }
   </script>
   <!-- Github buttons -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <?php if(isset($_SESSION["status"])){
+                    $status = $_SESSION["status"];
+                      if($status=="Success"){ ?>
+  <script type="text/javascript">
+	var status = "Success";
+		swal({
+        title: "Sucesso",
+        text: "Agendamento do quarto foi efectuado com sucesso",
+        icon: "success",
+        });
+        </script>
+<?php unset($_SESSION['status']);}}?>  
 </body>
 
 </html>

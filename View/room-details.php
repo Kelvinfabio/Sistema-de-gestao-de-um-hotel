@@ -37,7 +37,6 @@ if (isset($_SESSION['status'])) {
     $status = $_SESSION['status'];
 }
 ?>
-?>
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -140,7 +139,7 @@ if (isset($_SESSION['status'])) {
                             <nav class="mainmenu">
                             <ul>
                                     <li class="active"><a href="./index.php">Home</a></li>
-                                    <li><a href="<?= $quarto->quarto();?>">Rooms</a></li>
+                                    <li><a href="rooms.php">Rooms</a></li>
                                     <li><a href="Comer&Beber.php">Comer & Beber</a></li>
                                     <li><a href="#">Sua Reserva</a>
                                         <ul class="dropdown">

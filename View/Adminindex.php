@@ -23,7 +23,7 @@
     rel="stylesheet" />
 
   <!-- Icons. Uncomment required icon fonts -->
-  <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
   <!-- Core CSS -->
   <link rel="stylesheet" href="../View/Suport/Sneat/vendor/css/core.css" class="template-customizer-core-css" />
@@ -44,6 +44,8 @@
   <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
   <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
   <script src="../View/Suport/Sneat/js/config.js"></script>
+
+
 </head>
 <?php
 include ("../Controller/Links.php");
@@ -74,28 +76,21 @@ $result = $admin->ShowCurrentGuest();
         <ul class="menu-inner py-1">
           <!-- Dashboard -->
           <li class="menu-item active">
-            <a href="index.html" class="menu-link">
-            <?xml version="1.0" ?><svg id="Layer_1" style="enable-background:new 0 0 24 24;" width="24" version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M21.146,8.576l-7.55-6.135c-0.925-0.751-2.267-0.751-3.192,0c0,0,0,0,0,0L2.855,8.575C2.59,8.79,2.439,9.108,2.439,9.448  v11.543c0,0.62,0.505,1.13,1.125,1.13h5.062c0.62,0,1.125-0.51,1.125-1.13v-7.306h4.499v7.306c0,0.62,0.505,1.13,1.125,1.13h5.062  c0.62,0,1.125-0.51,1.125-1.13V9.448C21.561,9.108,21.41,8.79,21.146,8.576z M20.436,20.997h-5.062V13.68  c0-0.62-0.505-1.119-1.125-1.119H9.75c-0.62,0-1.125,0.499-1.125,1.119v7.317H3.564V9.448l7.55-6.134  c0.513-0.418,1.26-0.417,1.773,0l7.55,6.134V20.997z"/></svg>
-              <div data-i18n="Analytics">  Main Page</div>
-              
+            <a href="Adminindex.php" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-layout"></i>
+              <div data-i18n="Layouts">Main Page</div>
             </a>
           </li>
 
           <!-- Layouts -->
-          <li class="menu-item">
+          <li class="menu-item ">
             <a href="QuartoAdmin.php" class="menu-link">
-            <?xml version="1.0" ?>
-                            <svg data-name="Layer 1" id="Layer_1" width="28" viewBox="0 0 512 512"
-                              xmlns="http://www.w3.org/2000/svg">
-                              <title />
-                              <path
-                                d="M414.86,151.41H97.14a3.87,3.87,0,0,0-3.87,3.87V329a3.87,3.87,0,0,0,3.87,3.87h16.55v23.81a3.88,3.88,0,0,0,3.88,3.87H392.64a3.87,3.87,0,0,0,3.87-3.87V332.91h18.35a3.87,3.87,0,0,0,3.87-3.87V155.28A3.87,3.87,0,0,0,414.86,151.41ZM411,159.15V305.22h-10.3a16.33,16.33,0,0,0,2.56-8.74V283.87a16.5,16.5,0,0,0-16.48-16.49H373.4a16.9,16.9,0,0,0,2.81-9.34v-51A17.1,17.1,0,0,0,359.13,190H269.21A17,17,0,0,0,256,196.36,17,17,0,0,0,242.79,190H152.87a17.1,17.1,0,0,0-17.08,17.08v51a16.9,16.9,0,0,0,2.81,9.34H125.24a16.5,16.5,0,0,0-16.48,16.49v12.61a16.33,16.33,0,0,0,2.56,8.74H101V159.15ZM116.51,296.48V283.87a8.75,8.75,0,0,1,8.73-8.74H386.76a8.75,8.75,0,0,1,8.73,8.74v12.61a8.75,8.75,0,0,1-8.73,8.74H125.24A8.75,8.75,0,0,1,116.51,296.48Zm27-38.44v-51a9.35,9.35,0,0,1,9.34-9.34h89.92a9.35,9.35,0,0,1,9.34,9.34v51a9.35,9.35,0,0,1-9.34,9.34H152.87A9.35,9.35,0,0,1,143.53,258Zm116.34-51a9.35,9.35,0,0,1,9.34-9.34h89.92a9.35,9.35,0,0,1,9.34,9.34v51a9.35,9.35,0,0,1-9.34,9.34H269.21a9.35,9.35,0,0,1-9.34-9.34Zm128.9,145.8H121.44V332.91H388.77ZM411,325.16H101V313H411Z" />
-                            </svg>
+              <i class="menu-icon tf-icons bx bx-layout"></i>
               <div data-i18n="Layouts">Quarto</div>
             </a>
           </li>
-            <!-- Extended components -->
-          
+          <!-- Extended components -->
+
           <li class="menu-item ">
             <a href="QuartoAdmin.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -108,7 +103,7 @@ $result = $admin->ShowCurrentGuest();
               <div data-i18n="Layouts">R. de outros serviços</div>
             </a>
           </li>
-        
+
         </ul>
       </aside>
       <!-- / Menu -->
@@ -138,11 +133,48 @@ $result = $admin->ShowCurrentGuest();
             <!-- /Search -->
 
             <ul class="navbar-nav flex-row align-items-center ms-auto">
+
               <!-- Place this tag where you want the button to render. -->
               <li class="nav-item lh-1 me-3">
                 <a class="github-button" href="https://github.com/themeselection/sneat-html-admin-template-free"
                   data-icon="octicon-star" data-size="large" data-show-count="true"
                   aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
+              </li>
+              <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                  <i class="fa fa-bell cursor-pointer"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                
+                  <li>
+                  <li class="mb-2">
+                  <?php foreach($admin->ShowAllCancelRoomsReservations() as $key){ ?>
+                    <a class="dropdown-item border-radius-md" href="Mailbox.php">
+                      <div class="d-flex py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="text-sm font-weight-normal mb-1">
+                            <span class="font-weight-bold"><?php echo $key["Motivo"];?></span> by <?php echo $key["Nome"];?> <?php echo $key["Sobrenome"];?>
+                          </h6>
+                          <p class="text-xs text-secondary mb-0 ">
+                            <i class="fa fa-clock me-1"></i>
+                            1 day
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                    <?php } ?>
+                  </li>
+
+                  <li>
+                    <div class="dropdown-divider"></div>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="auth-login-basic.html">
+                      <i class="bx bx-power-off me-2"></i>
+                      <span class="align-middle">Log Out</span>
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </div>
@@ -488,7 +520,9 @@ $result = $admin->ShowCurrentGuest();
                         <div class="d-flex align-items-center justify-content-between mb-3">
                           <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs
                           </p>
-                          <p class="fw-bold mb-0">Room: <?php echo $result['NumQuarto'] ?></p>
+                          <p class="fw-bold mb-0">Room:
+                            <?php echo $result['NumQuarto'] ?>
+                          </p>
                         </div>
                       </div>
                       <div class="d-flex align-items-center mb-4">
@@ -499,9 +533,14 @@ $result = $admin->ShowCurrentGuest();
                         </div>
                         <div class="flex-grow-1 ms-3">
                           <div class="d-flex flex-row align-items-center mb-2">
-                            <h4 class="mb-0 me-2"><?php echo $result['Nome'] ?> <?php echo $result['Sobrenome']?></h4>
+                            <h4 class="mb-0 me-2">
+                              <?php echo $result['Nome'] ?>
+                              <?php echo $result['Sobrenome']?>
+                            </h4>
                           </div>
-                          <p class="mb-0 me-2">Bed: <?php echo $result['Categoria']?></p>
+                          <p class="mb-0 me-2">Bed:
+                            <?php echo $result['Categoria']?>
+                          </p>
                         </div>
                       </div>
                       <div class="justify-content-between d-flex">
@@ -509,8 +548,12 @@ $result = $admin->ShowCurrentGuest();
                         <p class="card-text">Check-out</p>
                       </div>
                       <div class="justify-content-between d-flex">
-                        <h3><?php echo $result['data_entrada']?></h3>
-                        <h3 class="card-text"><?php echo $result['data_saida']?></h3>
+                        <h3>
+                          <?php echo $result['data_entrada']?>
+                        </h3>
+                        <h3 class="card-text">
+                          <?php echo $result['data_saida']?>
+                        </h3>
                       </div>
                       <hr class="bg-black"
                         style="width:100px; height:1px; margin-left: 35.6%; transform: rotate(90deg); margin-bottom: 2rem; margin-top: -20px;">
@@ -523,7 +566,7 @@ $result = $admin->ShowCurrentGuest();
                 </div>
               </div>
             </section>
-            
+
           </div>
 
           <!-- / Content -->
@@ -586,6 +629,7 @@ $result = $admin->ShowCurrentGuest();
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+
 </body>
 
 </html>

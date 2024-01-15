@@ -10,6 +10,7 @@ class ReservaQuartoDTO{
     private $data_saida;
     private $NumQuarto;
     private $NumHospedes;
+    private $motivo;
 
     public function getIdReservaQuarto(){
         return $this->id_reservaquarto;
@@ -70,6 +71,12 @@ class ReservaQuartoDTO{
     }
     public function setNumHospedes($num_hospedes){
         $this->NumHospedes = $num_hospedes;
+    }
+    public function getMotivo(){
+        return $this->motivo;
+    }
+    public function setMotivo($Motivo){
+        $this->motivo = $Motivo;
     }
 
 

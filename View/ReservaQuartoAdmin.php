@@ -46,10 +46,12 @@
   <script src="../View/Suport/Sneat/js/config.js"></script>
 </head>
 <?php
+$paginaAtual = isset($_GET['page']) ? $_GET['page'] : 1;
+$limite = 4;
 include ("../Controller/Links.php");
 session_start();
 $admin = new AdminDAO();
-$result = $admin->ShowAllRoomsReservations();
+$result = $admin->ShowAllRoomsReservations($paginaAtual);
 
 ?>
 
@@ -220,6 +222,35 @@ $result = $admin->ShowAllRoomsReservations();
                   </div>
                 </div>
             <?php unset($_SESSION['status']);}}?>
+            <ul class="pagination">
+              
+                            <li class="page-item first">
+                              <a class="page-link" href="javascript:void(0);"
+                                ><i class="tf-icon bx bx-chevrons-left"></i
+                              ></a>
+                            </li>
+                            <li class="page-item prev">
+                              <a class="page-link" href="javascript:void(0);"
+                                ><i class="tf-icon bx bx-chevron-left"></i
+                              ></a>
+                            </li>
+                            <?php for($i=1;$i<=$limite;$i++){?>
+                            <li class="page-item">
+                              <a class="page-link" href="ReservaQuartoAdmin.php?page=<?php echo $i;?>"><?php echo $i;?></a>
+                            </li>
+                            <?php }?>
+                            <li class="page-item next">
+                              <a class="page-link" href="javascript:void(0);"
+                                ><i class="tf-icon bx bx-chevron-right"></i
+                              ></a>
+                            </li>
+                            <li class="page-item last">
+                              <a class="page-link" href="javascript:void(0);"
+                                ><i class="tf-icon bx bx-chevrons-right"></i
+                              ></a>
+                            </li>
+                            
+                          </ul>
 
             <!-- / Content -->
 

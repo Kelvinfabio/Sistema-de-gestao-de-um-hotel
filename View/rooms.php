@@ -141,7 +141,7 @@ $quartoDAO = new QuartoDAO();
                                     <li><a href="#">Sua Reserva</a>
                                         <ul class="dropdown">
                                             <li><a href="ReservaQuarto.php">R. Quarto</a></li>
-                                            <li><a href="./blog-details.html">R. Outros serviços</a></li>
+                                            <li><a href="ReservaServices.php">R. Outros serviços</a></li>
                                         </ul>
                                     </li>
                                     </li>
